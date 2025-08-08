@@ -1,5 +1,4 @@
-name: Playwright Cucumber Tests
-
+name:  Pandora test
 on:
   push:
     branches: [ main ]
@@ -11,19 +10,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js 16
-      uses: actions/setup-node@v3
+    - uses: actions/checkout@v4
+    - name: Use Node.js 18
+      uses: actions/setup-node@v4
       with:
-        node-version: 16
+        node-version: 18
+        cache: 'npm'
     - name: Install deps
       run: npm ci
+    - name: Install Playwright browsers
+      run: npx playwright install --with-deps chromium
     - name: Run Cucumber tests
       run: npm test
     - name: Generate HTML report
       run: npm run report
     - name: Upload HTML report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: cucumber-report
         path: reports/cucumber-report.html
