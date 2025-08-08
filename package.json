@@ -1,0 +1,13 @@
+{
+  "name": "playwright-cucumber-bdd",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "cucumber-js",
+    "report": "node ./features/support/report-hooks.js"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^9.0.0",
+    "@playwright/test": "^1.44.0",
+    "cucumber-html-reporter": "^5.5.0"
+  }
+}
